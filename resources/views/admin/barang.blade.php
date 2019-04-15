@@ -14,6 +14,7 @@
                 <tr>
                   <th>Kode Barang</th>
                   <th>Nama Barang</th>
+                  <th>Foto Barang</th>
                   <th>Kode Jenis</th>
                   <th>Harga Net</th>
                   <th>Harga Jual</th>
@@ -30,6 +31,7 @@
                 <tr>
                   <td>{{$n->kode_barang}}</td>
                   <td>{{$n->nama_barang}}</td>
+                  <td><img src="{{ url('images/'.$n->foto_barang) }}" style="width: 70px; height: 70px"></td>
                   <td>{{$n->kode_jenis}}</td>
                   <td>{{$n->harga_net}}</td>
                   <td>{{$n->harga_jual}}</td>
@@ -45,7 +47,7 @@
             </div>
             <!-- /.box-body -->
           </div>
-        <form method="POST" action="{{url('admin/savebarang')}}">
+        <form method="POST" action="{{url('admin/savebarang')}}" enctype="multipart/form-data">
           @csrf
           <div class="box box-danger">
             <div class="box-header">
@@ -74,6 +76,20 @@
                 </div>
                 <!-- /.input group -->
               </div>
+                 <label>Foto Barang</label>
+                 <br>
+                 <center>
+                   <div class="form-group col-md-12">
+                     <img src="{{asset('images/no-image-icon-15.png')}}" alt="Nature" class="responsive" id="blah1" style="width: 300px;height: 300px; margin-left: 90px;">
+                     <br>  
+                     <center>
+                         <div class="container-fluid" style="width: 100%;">                                            
+                             <input name="foto_barang" type="file" class="ts-forms" style="" onchange="readURL1(this);" >
+                         </div>
+
+                     </center>
+                   </div>
+                   </center>
               <div class="form-group">
                 <label>Kode Jenis</label>
                 <?php 
@@ -119,9 +135,25 @@
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
-             <button type="submit" style="color: green; float: right;">Tambah</button>
+             <div class="box-footer">
+                <button type="submit" class="btn btn-primary" style="float: right;"><i class="fa fa-plus"></i></button>
+              </div>
             </div>
             <!-- /.box-body -->
           </div>
         </form>
+        <script type="text/javascript">
+                         function readURL1(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah1')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
           @endsection

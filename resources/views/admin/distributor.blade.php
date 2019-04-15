@@ -119,8 +119,9 @@
                 <!-- /.input group -->
               </div>
               <!-- /.form group -->
-             <button type="submit" style="color: green; float: right;">Tambah</button>
-            </div>
+             <div class="box-footer">
+                <button type="submit" class="btn btn-primary" style="float: right;"><i class="fa fa-plus"></i></button>
+              </div>            </div>
             <!-- /.box-body -->
           </div>
         </form>

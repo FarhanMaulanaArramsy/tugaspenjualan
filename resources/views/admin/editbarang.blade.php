@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<form method="POST" action="{{url('admin/updatebarang')}}">
+<form method="POST" action="{{url('admin/updatebarang')}}" enctype="multipart/form-data">
           @csrf
           <div class="box box-warning">
             <div class="box-header">
@@ -30,6 +30,20 @@
                 </div>
                 <!-- /.input group -->
               </div>
+              <label>Foto Barang</label>
+                 <br>
+                 <center>
+                   <div class="form-group col-md-12">
+                     <img src="{{asset('images/'. $b->foto_barang)}}" alt="Nature" class="responsive" id="blah1" style="width: 300px;height: 300px; margin-left: 90px;">
+                     <br>  
+                     <center>
+                         <div class="container-fluid" style="width: 100%;">                                            
+                             <input name="foto_barang" type="file" class="ts-forms" style="" onchange="readURL1(this);" >
+                         </div>
+
+                     </center>
+                   </div>
+                   </center>
               <div class="form-group">
                 <label>Kode Jenis</label>
                 <?php 
@@ -80,4 +94,18 @@
             <!-- /.box-body -->
           </div>
         </form>
+        <script type="text/javascript">
+                         function readURL1(input) {
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah1')
+                            .attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                    }
+                }
+            </script>
         @endsection

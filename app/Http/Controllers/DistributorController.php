@@ -7,7 +7,13 @@ use Illuminate\Support\Facades\Input;
 use App\TblDistributor;
 
 class DistributorController extends Controller
-{
+{   
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
     	return view('admin.distributor');

@@ -17,6 +17,7 @@ class CreateTblBarangsTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('kode_barang')->unsigned();
             $table->string('nama_barang');
+            $table->string('foto_barang');
             $table->bigInteger('kode_jenis')->unsigned();
             $table->foreign('kode_jenis')->references('id')->on('tbl_jenis');
             $table->string('harga_net');

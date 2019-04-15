@@ -7,7 +7,12 @@ use Illuminate\Support\Facades\Input;
 use App\TblJenis;
 
 class JenisController extends Controller
-{
+{   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     public function index()
     {
     	return view('admin.jenis');

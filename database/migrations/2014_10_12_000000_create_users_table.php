@@ -19,9 +19,20 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('role')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
+
+        DB::table('users')->insert(
+            array(
+                'id' => '1',
+                'name' => 'farhan',
+                'email' => 'farhan@gmail.com',
+                'password' => bcrypt('123456789'),
+                'role' => 'admin',
+            )
+        );
     }
 
     /**
